@@ -1,3 +1,3 @@
 ﻿# MyTuitionApp
  
- Deployed on Heroku: mytuitionapp.herokuapp.com
+ Deployed on Heroku: http://mytuitionapp.herokuapp.com/
