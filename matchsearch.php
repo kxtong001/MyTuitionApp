@@ -209,7 +209,7 @@ if(isset($_SESSION['login_user'])){
                 echo"</tr>";
             }
         if(isset($_POST['submit1'])){
-            mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', '');");
+            mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', 'NO');");
             mysqli_query($db,"UPDATE matchrequest JOIN users ON users.id=matchrequest.requestid SET matchrequest.requser = users.username;");
             ?>
 				<script type="text/javascript">
