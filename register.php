@@ -142,7 +142,7 @@
                                         <option>Humanities</option>
                                 </select>
                                 <small id="subjectHelper" class="form-text text-muted">
-                                Please indicate the subject you are looking for.
+                                (Optional)Please indicate the subject you are looking for.
                                 </small>
                             </div>
                             <div class="form-group col-md-3">
@@ -158,7 +158,7 @@
                                         <option>Humanities</option>
                                 </select>
                                 <small id="subjectHelper" class="form-text text-muted">
-                                Please indicate the subject you are looking for.
+                                (Optional)Please indicate the subject you are looking for.
                                 </small>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                                         <option>Sunday</option>
                                 </select>
                                 <small id="dayHelper" class="form-text text-muted">
-                                Please indicate your available day(s).
+                                (Optional)Please indicate your available day(s).
                                 </small>
                             </div>
                             <div class="form-group col-md-3">
@@ -221,7 +221,7 @@
                                         <option>Sunday</option>
                                 </select>
                                 <small id="dayHelper" class="form-text text-muted">
-                                Please indicate your available day(s).
+                                (Optional)Please indicate your available day(s).
                                 </small>
                             </div>
                         </div>
