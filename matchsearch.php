@@ -151,7 +151,7 @@ if(isset($_SESSION['login_user'])){
                                                                                                             (availableday1 IN ('$qrow[availableday1]', '$qrow[availableday2]', '$qrow[availableday3]') OR
                                                                                                              availableday2 IN ('$qrow[availableday1]', '$qrow[availableday2]', '$qrow[availableday3]') OR
                                                                                                              availableday3 IN ('$qrow[availableday1]', '$qrow[availableday2]', '$qrow[availableday3]'))
-                                                                                                            ;");
+                                                                                                            ORDER BY RAND() LIMIT 3;");
                                                                                                                                
 
         if(mysqli_num_rows($results)==0){
