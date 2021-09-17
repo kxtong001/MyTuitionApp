@@ -155,7 +155,7 @@ function closeNav() {
 	</div>
 
 
-	<h2>List Of Tutors</h2>
+	<h2>List Of Tutors/Tutees</h2>
 	<?php
 		if(isset($_POST['submit']))
 		{
