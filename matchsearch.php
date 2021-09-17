@@ -176,6 +176,7 @@ if(isset($_SESSION['login_user'])){
         echo "<tr style='background-color: #6db6b9e6;'>";
                 
                 echo "<th>"; echo "ID"; echo "</th>";
+		echo "<th>"; echo "Username"; echo "</th>";
                 echo "<th>"; echo "Tutor First Name"; echo "</th>";
                 echo "<th>"; echo "Tutor Last Name"; echo "</th>";
                 echo "<th>"; echo "Education Level"; echo "</th>";
@@ -193,6 +194,7 @@ if(isset($_SESSION['login_user'])){
             while($sr= mysqli_fetch_assoc($results)){   
                 echo"<tr>";
                 echo"<td>".$sr['id']."</td>";
+		echo"<td>".$sr['username']."</td>";
                 echo"<td>".$sr['firstname']."</td>";
                 echo"<td>".$sr['lastname']."</td>";
                 echo"<td>".$sr['edulevel']."</td>";
