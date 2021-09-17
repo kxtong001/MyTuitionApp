@@ -177,8 +177,8 @@ if(isset($_SESSION['login_user'])){
                 
                 echo "<th>"; echo "ID"; echo "</th>";
 		echo "<th>"; echo "Username"; echo "</th>";
-                echo "<th>"; echo "Tutor First Name"; echo "</th>";
-                echo "<th>"; echo "Tutor Last Name"; echo "</th>";
+                echo "<th>"; echo "First Name"; echo "</th>";
+                echo "<th>"; echo "Last Name"; echo "</th>";
                 echo "<th>"; echo "Education Level"; echo "</th>";
                 echo "<th>"; echo "Timeslot"; echo "</th>";
                 echo "<th>"; echo "Rate"; echo "</th>";
