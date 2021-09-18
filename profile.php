@@ -185,6 +185,7 @@
 			
 			<br><br>
 			<h2>Your comments</h2>
+			<p>Comments left by other users. Do make use of the report button if you find the comment malicious</p>
 			<br><br>
 	
 	<?php
@@ -207,13 +208,13 @@
 
 			echo "</tr>";	
 
-			while($row=mysqli_fetch_assoc($q))     /*kexuan add the button in here*/
+			while($row=mysqli_fetch_assoc($q))     
 			{
 			?>
 				<tr> 
 					<td><?php echo $row['writeruser']; ?></td>
 					<td><?php echo $row['review']; ?></td>
-					
+					<td><a href="commentmanagement/reportcomment.php?id=<?php echo $row['id']; ?>">Report</a></td>
 				</tr>
 				<?php	
 			}

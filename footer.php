@@ -11,8 +11,7 @@
 	footer
 	{
 		height: 220px;
-		width: 1360px;
-		background-color: black;
+
 	}
 		.fa
 		{
@@ -54,22 +53,28 @@
 
 </head>
 <body>
-<footer style="background-color: black; ">
-	<br>
-	<h3 style="color:white;text-align: center;">Contact us through our social media!</h3><br>
-
-	<div style="margin:0px 610px;">
-
-		<a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-		<a href="https://twitter.com/" class="fa fa-twitter"></a>
-		<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
-	</div>
-
-	<p style="color:white;text-align: center;">
+<footer>
+	<div class="container">
 		<br>
-		Email:&nbsp MyTuitionApp1234@gmail.com <br><br>
-		Mobile:&nbsp +65 1234 5678
-	</p>
+			<div class="row text-center py-5">
+				<div class="col-md-4">
+					<p>The purpose of MyTuitionApp is to help out any tutors/students who can't seem to find their matches easily by providing an online platform for users to easily find their matches.</p>
+				</div>
+				<div class="col-md-4">
+					<h3 class="text-center">CONTACT INFO</h3>
+					<br>
+					<p>(65) xxxx-xxxx<br>
+					email@tuition.com</p>
+				</div>
+				<div class="col-md-4">
+					<h3 class="text-center">CONNECT WITH US</h3><br>
+					<a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/" class="fa fa-twitter"></a>
+					<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+					</div>
+				</div>
+			</div>
+		</div>
 </footer>
 </body>
 </html>

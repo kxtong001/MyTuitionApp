@@ -128,6 +128,12 @@ function closeNav() {
 }
 </script>
 
+<h2>Your Recommended Matches</h2>
+<b><p>Matches are based on your level of study, preferred time of day, preferred rate, area, subject(s), available day(s)</p></b>
+	<br><br>
+
+
+
 <?php
 //check if user is logged in
 if(isset($_SESSION['login_user'])){
@@ -145,11 +151,11 @@ if(isset($_SESSION['login_user'])){
                                                                                                             (availableday1 IN ('$qrow[availableday1]', '$qrow[availableday2]', '$qrow[availableday3]') OR
                                                                                                              availableday2 IN ('$qrow[availableday1]', '$qrow[availableday2]', '$qrow[availableday3]') OR
                                                                                                              availableday3 IN ('$qrow[availableday1]', '$qrow[availableday2]', '$qrow[availableday3]'))
-                                                                                                            ;");
+                                                                                                            ORDER BY RAND() LIMIT 3;");
                                                                                                                                
 
         if(mysqli_num_rows($results)==0){
-            echo "Sorry! No matches for your picks! Try editing your choices!";
+            echo "Sorry! No matches for your picks! Try editing your profile choices!";
         }
         else
         {       
@@ -170,8 +176,9 @@ if(isset($_SESSION['login_user'])){
         echo "<tr style='background-color: #6db6b9e6;'>";
                 
                 echo "<th>"; echo "ID"; echo "</th>";
-                echo "<th>"; echo "Tutor First Name"; echo "</th>";
-                echo "<th>"; echo "Tutor Last Name"; echo "</th>";
+		echo "<th>"; echo "Username"; echo "</th>";
+                echo "<th>"; echo "First Name"; echo "</th>";
+                echo "<th>"; echo "Last Name"; echo "</th>";
                 echo "<th>"; echo "Education Level"; echo "</th>";
                 echo "<th>"; echo "Timeslot"; echo "</th>";
                 echo "<th>"; echo "Rate"; echo "</th>";
@@ -187,6 +194,7 @@ if(isset($_SESSION['login_user'])){
             while($sr= mysqli_fetch_assoc($results)){   
                 echo"<tr>";
                 echo"<td>".$sr['id']."</td>";
+		echo"<td>".$sr['username']."</td>";
                 echo"<td>".$sr['firstname']."</td>";
                 echo"<td>".$sr['lastname']."</td>";
                 echo"<td>".$sr['edulevel']."</td>";
@@ -203,7 +211,7 @@ if(isset($_SESSION['login_user'])){
                 echo"</tr>";
             }
         if(isset($_POST['submit1'])){
-            mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', '');");
+            mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', 'NO');");
             mysqli_query($db,"UPDATE matchrequest JOIN users ON users.id=matchrequest.requestid SET matchrequest.requser = users.username;");
             ?>
 				<script type="text/javascript">
@@ -226,6 +234,10 @@ else{
 
         echo"</table>";
         echo"</center>"; 
+?>
+<?php
+
+include "footer.php";
 ?>
 </body>
 </html>

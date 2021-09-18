@@ -140,11 +140,10 @@ section
 	width: 1361px;
 	background-color: black;
 }
-footer
-{
-	
-	width: 1361px;
-	background-color: red;
+footer {
+	background-color: #40474e;
+	background-size: cover;
+	color: white;
 }
 
 
@@ -205,8 +204,11 @@ input
 	width: 1000px;
 	background-color: black;
 	margin: 0px auto;
-	opacity: .9;
+	opacity: .8;
 	color: white;
 	padding: 20px;
 }
+
+
+
 

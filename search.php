@@ -131,24 +131,31 @@ function closeNav() {
 	<div class="srch">
 		<form class="navbar-form" method="post" name="form1">
 			
-				<input class="form-control" type="text" name="search" placeholder="Enter Keyword etc.." required="">
+				<input class="form-control" type="text" name="search" placeholder="Enter Keyword etc.." aria-describedby="formHelper" required="">
+				
 				<button style="background-color: #6db6b9e6;" type="submit" name="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search"></span>
 				</button>
+				<small id="formHelper" class="form-text text-muted">
+					Enter relevant keywords to find your match(s).
+				</small>
 		</form>
 	</div>
-	<!--___________________request tutor__________________-->
+	<!--___________________request tutor/tutee__________________-->
 	<div class="srch">
 		<form class="navbar-form" method="post" name="form1">
 			
-				<input class="form-control" type="text" name="matchid" placeholder="Enter tutor ID" required="">
+				<input class="form-control" type="text" name="matchid" placeholder="Enter Tutor/Tutee ID" required="">
 				<button style="background-color: #6db6b9e6;" type="submit" name="submit1" class="btn btn-default">Request
 				</button>
+				<small id="usernameHelper" class="form-text text-muted">
+					Enter the ID of the tutor or tutee you wish to match with.
+				</small>
 		</form>
 	</div>
 
 
-	<h2>List Of Tutors</h2>
+	<h2>List Of Tutors/Tutees</h2>
 	<?php
 		if(isset($_POST['submit']))
 		{
@@ -281,5 +288,6 @@ function closeNav() {
 
 	?>
 </div>
+
 </body>
 </html>

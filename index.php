@@ -60,7 +60,7 @@
 		<div class="row justify-content-center text-center">
 			<div class="col-10 py-5">
 				<h2>MyTuitionApp</h2>
-				<p class="lead">MyTuitionApp is an open-source front-end library with HTML and CSS based designs. This website is built with HTML5, CSS3 and Bootstrap 4.</p><a class="btn btn-purple btn-lg" href="register.php" >Register now!</a>
+				<p class="lead">MyTuitionApp is an open-source front-end website to assist users in getting matches based on their tuition requirements,whether they are tutors seeking students or students seeking tutors.</p><p> Register to start finding matches!</p><a class="btn btn-purple btn-lg" href="register.php" >Register now!</a>
 			</div>
 		</div>
 	</div>

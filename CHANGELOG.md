@@ -1,6 +1,21 @@
 # Change Log
 All notable changes to MyTuitionApp will be documented in this file.
 
+## [1.0] - 2021-08-31
+ #### Version Highlights (Final)
+
+Review page:
+> Now accepting webpage feedback as well, malicious comments are now reportable by the user
+
+### Added
+- Added the report button on comments in the Profile page
+- Added some help text on major features
+
+### Changed
+- Review page now accepts webpage feedback as well
+### Fixed
+- Fixed more language issues and formatting issues
+
 ## [0.9] - 2021-08-22
  #### Version Highlights (Pre-release)
 Smart match feature:
