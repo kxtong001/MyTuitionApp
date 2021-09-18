@@ -9,16 +9,16 @@
  	<style type="text/css">
  		.wrapper
  		{
- 			width: 300px;
+ 			width: 900px;
  			margin: 0 auto;
- 			color: white;
+ 			color: black;
  		}
  	</style>
  </head>
- <body style="background-color: #004528; ">
+ <body style="background-color: #F5FCFF; ">
  	<div class="container">
  		<form action="" method="post">
- 			<button class="btn btn-default" style="float: right; width: 70px;" name="submit1">Edit</button>
+ 			<button class="btn btn-default" style="float: right; width: 120px;" name="submit1">Edit User Info</button>
  		</form>
  		<div class="wrapper">
  			<?php
@@ -31,7 +31,7 @@
  						</script>
  					<?php
  				}
- 				$q=mysqli_query($db,"SELECT * FROM users where username='$_SESSION[login_user]' ;");
+ 				$q=mysqli_query($db,"SELECT * FROM users JOIN matchinfo ON users.id = matchinfo.used_id WHERE users.username='$_SESSION[login_user]';");
  			?>
  			<h2 style="text-align: center;">My Profile</h2>
 
@@ -47,45 +47,28 @@
 	 				<?php echo $_SESSION['login_user']; ?>
 	 			</h4>
  			</div>
- 			<?php
+ 					  
+			<?php
  				echo "<b>";
  				echo "<table class='table table-bordered'>";
-	 				echo "<tr>";
-	 					echo "<td>";
-	 						echo "<b> First Name: </b>";
-	 					echo "</td>";
-
-	 					echo "<td>";
-	 						echo $row['firstname'];
-	 					echo "</td>";
-	 				echo "</tr>";
-
-	 				echo "<tr>";
-	 					echo "<td>";
-	 						echo "<b> Last Name: </b>";
-	 					echo "</td>";
-	 					echo "<td>";
-	 						echo $row['lastname'];
-	 					echo "</td>";
-	 				echo "</tr>";
-
-	 				echo "<tr>";
-	 					echo "<td>";
-	 						echo "<b> User Name: </b>";
-	 					echo "</td>";
-	 					echo "<td>";
-	 						echo $row['username'];
-	 					echo "</td>";
-	 				echo "</tr>";
-
-	 				echo "<tr>";
-	 					echo "<td>";
-	 						echo "<b> Password: </b>";
-	 					echo "</td>";
-	 					echo "<td>";
-	 						echo $row['password'];
-	 					echo "</td>";
-	 				echo "</tr>";
+				 // creates a table with 6 columns that are formatted to fit nicely.
+				
+				 	echo "<thead>";
+					echo "<tr>";
+						echo "<th style='width: 10%'> First Name:</th>";
+						echo "<th style='width: 23%'>";
+							echo $row['firstname'];
+						echo"</th>";
+						echo "<th style='width: 10%'> Last Name:</th>";
+						echo "<th style='width: 23%'>";
+							echo $row['lastname'];
+						echo"</th>";
+						echo "<th style='width: 10%'>Phone Number:</th>";
+						echo "<th style='width: 23%'>";
+							echo $row['phone'];
+						echo"</th>";
+					echo "</tr>";
+				   	echo "</thead>";
 
 	 				echo "<tr>";
 	 					echo "<td>";
@@ -94,25 +77,21 @@
 	 					echo "<td>";
 	 						echo $row['email'];
 	 					echo "</td>";
-	 				echo "</tr>";
 
-	 				echo "<tr>";
-	 					echo "<td>";
-	 						echo "<b> Phone Number: </b>";
-	 					echo "</td>";
-	 					echo "<td>";
-	 						echo $row['phone'];
-	 					echo "</td>";
-	 				echo "</tr>";
-					
-					echo "<tr>";
-	 					echo "<td>";
-	 						echo "<b> Area: </b>";
-	 					echo "</td>";
-	 					echo "<td>";
-	 						echo $row['area'];
-	 					echo "</td>";
-	 				echo "</tr>";
+						echo "<td>";
+							echo "<b> User Name: </b>";
+						echo "</td>";
+						echo "<td>";
+							echo $row['username'];
+						echo "</td>";
+
+						echo "<td>";
+							echo "<b> Password: </b>";
+						echo "</td>";
+						echo "<td>";
+							echo $row['password'];
+						echo "</td>";
+
 
 					echo "<tr>";
 	 					echo "<td>";
@@ -121,13 +100,89 @@
 	 					echo "<td>";
 	 						echo $row['userType'];
 	 					echo "</td>";
+
+						echo "<td>";
+	 						echo "<b> Area: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['area'];
+	 					echo "</td>";
+
+						 echo "<td>";
+	 						echo "<b> Education Level: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['edulevel'];
+	 					echo "</td>";
 	 				echo "</tr>";
 					
+					echo "<tr>";
+	 					echo "<td>";
+	 						echo "<b> Subject 1: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['subject1'];
+	 					echo "</td>";
 
-	 				
+						echo "<td>";
+	 						echo "<b> Subject 2: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['subject2'];
+	 					echo "</td>";
+
+						 echo "<td>";
+	 						echo "<b> Subject 3: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['subject3'];
+	 					echo "</td>";
+	 				echo "</tr>";
+					 
+					echo "<tr>";
+	 					echo "<td>";
+	 						echo "<b> Available Day of the Week: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['availableday1'];
+	 					echo "</td>";
+
+						echo "<td>";
+	 						echo "<b> Available Day of the Week: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['availableday2'];
+	 					echo "</td>";
+
+						 echo "<td>";
+	 						echo "<b> Available Day of the Week: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['availableday3'];
+	 					echo "</td>";
+	 				echo "</tr>";
+
+					echo "<tr>";
+	 					echo "<td>";
+	 						echo "<b> Preferred Period of the Day: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['timeslot'];
+	 					echo "</td>";
+
+						echo "<td>";
+	 						echo "<b> Preferred Tuition Rate: </b>";
+	 					echo "</td>";
+	 					echo "<td>";
+	 						echo $row['rate'];
+	 					echo "</td>";
+	 				echo "</tr>";
+
+						
  				echo "</table>";
- 				echo "</b>";
+				echo "</b>";			
  			?>
+			
  		</div>
  	</div>
  </body>

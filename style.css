@@ -170,11 +170,11 @@ input
 }
 .box2
 {
-	height: 600px;
-	width: 450px;
-	background-color: grey;
+	height: 630px;
+	width: 1000px;
+	background-color: black;
 	margin: 0px auto;
-	opacity: .7;
+	opacity: .9;
 	color: white;
 	padding: 20px;
 }

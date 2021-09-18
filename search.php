@@ -130,7 +130,7 @@ function closeNav() {
 	<div class="srch">
 		<form class="navbar-form" method="post" name="form1">
 			
-				<input class="form-control" type="text" name="search" placeholder="search books.." required="">
+				<input class="form-control" type="text" name="search" placeholder="Enter Keyword etc.." required="">
 				<button style="background-color: #6db6b9e6;" type="submit" name="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search"></span>
 				</button>
@@ -140,7 +140,7 @@ function closeNav() {
 	<div class="srch">
 		<form class="navbar-form" method="post" name="form1">
 			
-				<input class="form-control" type="text" name="bid" placeholder="Enter Book ID" required="">
+				<input class="form-control" type="text" name="bid" placeholder="Enter tutor ID" required="">
 				<button style="background-color: #6db6b9e6;" type="submit" name="submit1" class="btn btn-default">Request
 				</button>
 		</form>
@@ -149,14 +149,24 @@ function closeNav() {
 
 	<h2>List Of Tutors</h2>
 	<?php
-
 		if(isset($_POST['submit']))
 		{
-			$q=mysqli_query($db,"SELECT * from books where name like '%$_POST[search]%' ");
-
+			$q=mysqli_query($db,"SELECT * from users JOIN matchinfo ON users.id=matchinfo.used_id WHERE (username like '%$_POST[search]%' or
+																										 userType like '%$_POST[search]%' or
+																										 area like '%$_POST[search]%' or
+																										 edulevel like '%$_POST[search]%' or
+																										 subject1 like '%$_POST[search]%' or
+																										 subject2 like '%$_POST[search]%' or
+																										 subject3 like '%$_POST[search]%' or
+																										 timeslot like '%$_POST[search]%' or
+																										 availableday1 like '%$_POST[search]%' or
+																										 availableday2 like '%$_POST[search]%' or
+																										 availableday3 like '%$_POST[search]%' or
+																										 rate like '%$_POST[search]%') ");
+			
 			if(mysqli_num_rows($q)==0)
 			{
-				echo "Sorry! No book found. Try searching again.";
+				echo "Sorry! No tutor found. Try searching again for a specific name or with keywords (North, Night, Saturday, Tutor, etc).";
 			}
 			else
 			{
@@ -164,24 +174,36 @@ function closeNav() {
 			echo "<tr style='background-color: #6db6b9e6;'>";
 				//Table header
 				echo "<th>"; echo "ID";	echo "</th>";
-				echo "<th>"; echo "Book-Name";  echo "</th>";
-				echo "<th>"; echo "Authors Name";  echo "</th>";
-				echo "<th>"; echo "Edition";  echo "</th>";
-				echo "<th>"; echo "Status";  echo "</th>";
-				echo "<th>"; echo "Quantity";  echo "</th>";
-				echo "<th>"; echo "Department";  echo "</th>";
+				echo "<th>"; echo "Username";  echo "</th>";
+				echo "<th>"; echo "Area";  echo "</th>";
+				echo "<th>"; echo "Level";  echo "</th>";
+				echo "<th>"; echo "Subject 1";  echo "</th>";
+				echo "<th>"; echo "Subject 2";  echo "</th>";
+				echo "<th>"; echo "Subject 3";  echo "</th>";
+				echo "<th>"; echo "Available time";  echo "</th>";
+				echo "<th>"; echo "Available day 1";  echo "</th>";
+				echo "<th>"; echo "Available day 2";  echo "</th>";
+				echo "<th>"; echo "Available day 3";  echo "</th>";
+				echo "<th>"; echo "Rates";  echo "</th>";
+				echo "<th>"; echo "Role";  echo "</th>";
 			echo "</tr>";	
 
 			while($row=mysqli_fetch_assoc($q))
 			{
 				echo "<tr>";
-				echo "<td>"; echo $row['bid']; echo "</td>";
-				echo "<td>"; echo $row['name']; echo "</td>";
-				echo "<td>"; echo $row['authors']; echo "</td>";
-				echo "<td>"; echo $row['edition']; echo "</td>";
-				echo "<td>"; echo $row['status']; echo "</td>";
-				echo "<td>"; echo $row['quantity']; echo "</td>";
-				echo "<td>"; echo $row['department']; echo "</td>";
+				echo "<td>"; echo $row['id']; echo "</td>";
+				echo "<td>"; echo $row['username']; echo "</td>";
+				echo "<td>"; echo $row['area']; echo "</td>";
+				echo "<td>"; echo $row['edulevel']; echo "</td>";
+				echo "<td>"; echo $row['subject1']; echo "</td>";
+				echo "<td>"; echo $row['subject2']; echo "</td>";
+				echo "<td>"; echo $row['subject3']; echo "</td>";
+				echo "<td>"; echo $row['timeslot']; echo "</td>";
+				echo "<td>"; echo $row['availableday1']; echo "</td>";
+				echo "<td>"; echo $row['availableday2']; echo "</td>";
+				echo "<td>"; echo $row['availableday3']; echo "</td>";
+				echo "<td>"; echo $row['rate']; echo "</td>";
+				echo "<td>"; echo $row['userType']; echo "</td>";
 
 				echo "</tr>";
 			}
@@ -191,30 +213,42 @@ function closeNav() {
 			/*if button is not pressed.*/
 		else
 		{
-			$res=mysqli_query($db,"SELECT * FROM `books` ORDER BY `books`.`name` ASC;");
+			$res=mysqli_query($db,"SELECT * from users INNER JOIN matchinfo ON users.id=matchinfo.used_id;");
 
 		echo "<table class='table table-bordered table-hover' >";
 			echo "<tr style='background-color: #6db6b9e6;'>";
 				//Table header
 				echo "<th>"; echo "ID";	echo "</th>";
-				echo "<th>"; echo "Book-Name";  echo "</th>";
-				echo "<th>"; echo "Authors Name";  echo "</th>";
-				echo "<th>"; echo "Edition";  echo "</th>";
-				echo "<th>"; echo "Status";  echo "</th>";
-				echo "<th>"; echo "Quantity";  echo "</th>";
-				echo "<th>"; echo "Department";  echo "</th>";
+				echo "<th>"; echo "Username";  echo "</th>";
+				echo "<th>"; echo "Area";  echo "</th>";
+				echo "<th>"; echo "Level";  echo "</th>";
+				echo "<th>"; echo "Subject 1";  echo "</th>";
+				echo "<th>"; echo "Subject 2";  echo "</th>";
+				echo "<th>"; echo "Subject 3";  echo "</th>";
+				echo "<th>"; echo "Available time";  echo "</th>";
+				echo "<th>"; echo "Available day 1";  echo "</th>";
+				echo "<th>"; echo "Available day 2";  echo "</th>";
+				echo "<th>"; echo "Available day 3";  echo "</th>";
+				echo "<th>"; echo "Rates";  echo "</th>";
+				echo "<th>"; echo "Role";  echo "</th>";
 			echo "</tr>";	
 
 			while($row=mysqli_fetch_assoc($res))
 			{
 				echo "<tr>";
-				echo "<td>"; echo $row['bid']; echo "</td>";
-				echo "<td>"; echo $row['name']; echo "</td>";
-				echo "<td>"; echo $row['authors']; echo "</td>";
-				echo "<td>"; echo $row['edition']; echo "</td>";
-				echo "<td>"; echo $row['status']; echo "</td>";
-				echo "<td>"; echo $row['quantity']; echo "</td>";
-				echo "<td>"; echo $row['department']; echo "</td>";
+				echo "<td>"; echo $row['id']; echo "</td>";
+				echo "<td>"; echo $row['username']; echo "</td>";
+				echo "<td>"; echo $row['area']; echo "</td>";
+				echo "<td>"; echo $row['edulevel']; echo "</td>";
+				echo "<td>"; echo $row['subject1']; echo "</td>";
+				echo "<td>"; echo $row['subject2']; echo "</td>";
+				echo "<td>"; echo $row['subject3']; echo "</td>";
+				echo "<td>"; echo $row['timeslot']; echo "</td>";
+				echo "<td>"; echo $row['availableday1']; echo "</td>";
+				echo "<td>"; echo $row['availableday2']; echo "</td>";
+				echo "<td>"; echo $row['availableday3']; echo "</td>";
+				echo "<td>"; echo $row['rate']; echo "</td>";
+				echo "<td>"; echo $row['userType']; echo "</td>";
 
 				echo "</tr>";
 			}
@@ -236,7 +270,7 @@ function closeNav() {
 			{
 				?>
 					<script type="text/javascript">
-						alert("You must login to Request a book");
+						alert("You must login to search for a tutor");
 					</script>
 				<?php
 			}
