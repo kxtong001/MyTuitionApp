@@ -102,9 +102,10 @@
 
  
   <div class="h"> <a href="search.php">Search</a></div>
-  <div class="h"> <a href="request.php">Tutor Request</a></div>
+  <div class="h"><a href="matchsearch.php">Smart Match</a></div>
+  <div class="h"> <a href="request.php">Pending Requests</a></div>
   <div class="h"> <a href="approve.php">Request Approval</a></div>
-  <div class="h"><a href="expired.php">Your Matches</a></div>
+  
 </div>
 
 <div id="main">
@@ -260,7 +261,7 @@ function closeNav() {
 			if(isset($_SESSION['login_user']))
 			{
 				
-				mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', '');");
+				mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', 'NO');");
 				mysqli_query($db,"UPDATE matchrequest JOIN users ON users.id=matchrequest.requestid SET matchrequest.requser = users.username;");
 				?>
 					<script type="text/javascript">

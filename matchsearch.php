@@ -103,9 +103,10 @@
 
  
   <div class="h"> <a href="search.php">Search</a></div>
+  <div class="h"><a href="matchsearch.php">Smart Match</a></div>
   <div class="h"> <a href="request.php">Tutor Request</a></div>
   <div class="h"> <a href="approve.php">Request Approval</a></div>
-  <div class="h"><a href="expired.php">Your Matches</a></div>
+  
 </div>
 
 <div id="main">

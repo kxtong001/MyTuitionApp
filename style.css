@@ -101,7 +101,37 @@ input, select {
 vertical-align:middle;
 }
 
+.center {
+	margin-left: auto;
+	margin-right: auto;
+  }
+
 /*-------------------------------Main code   INDEX ---------------------------------------------------------*/
+
+
+
+.carousel-inner img 
+{
+	width: 100%;
+	height: 100%;
+}
+
+.button1 {
+	position: absolute;
+	top: 0%;
+	left: 80%;
+	transform: translate(-50%, -120%);
+	-ms-transform: translate(-50%, -120%);
+	background-color: rgb(18, 78, 168);
+	color: black;
+	font-size: 50px;
+	padding: 12px 24px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	white-space: nowrap;
+	text-align: center;
+  }
 
 section
 {
@@ -134,13 +164,14 @@ section .sec_img
 	color: white;
 }
 
+
 /*--------------------------------st_login-----------------------------*/
 
 .log_img
 {
 	height: 650px;
 	margin-top: 0px;
-	background-image: url("images/3.jpg");
+	background-image: url("images/log.jpg");
 }
 .box1 {
 	height: 450px;
@@ -166,7 +197,7 @@ input
 {
 	height: 630px;
 	margin-top: 0px;
-	background-image: url("images/4.png");
+	background-image: url("images/reg.jpg");
 }
 .box2
 {
@@ -178,3 +209,4 @@ input
 	color: white;
 	padding: 20px;
 }
+

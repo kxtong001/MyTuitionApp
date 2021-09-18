@@ -100,9 +100,10 @@
 
  
   <div class="h"> <a href="search.php">Search</a></div>
-  <div class="h"> <a href="request.php">Tutor Request</a></div>
+  <div class="h"><a href="matchsearch.php">Smart Match</a></div>
+  <div class="h"> <a href="request.php">Pending Requests</a></div>
   <div class="h"> <a href="approve.php">Request Approval</a></div>
-  <div class="h"><a href="expired.php">Your Matches</a></div>
+  
 
 </div>
 <div id="main">
@@ -124,6 +125,8 @@
 	  document.body.style.backgroundColor = "white";
 	}
 	</script>
+	
+	<h2>Your pending requests</h2>
 	<br><br>
 	
 	<?php
@@ -134,7 +137,7 @@
 
 			if(mysqli_num_rows($q)==0)
 			{
-				echo "There's no pending request";
+				echo "You have not sent out any requests, check out the search page or try out the match search system!";
 			}
 			else
 			{
@@ -143,8 +146,8 @@
 				//Table header
 				
 				echo "<th>"; echo "Username";  echo "</th>";
-				echo "<th>"; echo "Firstname";  echo "</th>";
-				echo "<th>"; echo "Lastname";  echo "</th>";
+				echo "<th>"; echo "First Name";  echo "</th>";
+				echo "<th>"; echo "Last Name";  echo "</th>";
 				echo "<th>"; echo "Area";  echo "</th>";
 				echo "<th>"; echo "Level";  echo "</th>";
 				echo "<th>"; echo "Subject 1";  echo "</th>";
@@ -192,6 +195,7 @@
 			echo "</b></h2>";
 		}
 		?>
+		
 	</div>
 </div>
 </body>

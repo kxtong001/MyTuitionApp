@@ -65,11 +65,10 @@
 		<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
 	</div>
 
-	<br>
 	<p style="color:white;text-align: center;">
 		<br>
-		Email:&nbsp Online.library@gmail.com <br><br>
-		Mobile:&nbsp &nbsp +880171*******
+		Email:&nbsp MyTuitionApp1234@gmail.com <br><br>
+		Mobile:&nbsp +65 1234 5678
 	</p>
 </footer>
 </body>

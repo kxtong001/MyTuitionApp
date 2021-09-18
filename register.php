@@ -224,8 +224,9 @@
                                 Please indicate your available day(s).
                                 </small>
                             </div>
-
-                            <div class="form-group">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
                                 <label for="rate">Tuition Rate($):</label>
                                 <select id="availableday3" class="form-control" name="rate" aria-describedby="rateHelper" required>
                                     <option selected></option>
@@ -238,10 +239,12 @@
                                 <small id="rateHelper" class="text-muted">
                                 Please choose the mininum rate you are looking for.
                                 </small>
-                            </div>                                
+                            </div> 
+                            <div class="form-group col-md-6">                               
+                            <input class="btn btn-default" type="submit" name="submit" value="Register" style="color: black; float: left; width: 200px; height: 60px">
+                            </div>
                         </div>
                         
-                        <input class="btn btn-default" type="submit" name="submit" value="Register" style="color: black; float: right; width: 120px; height: 30px">
                     </div>
                 </form>
             </div>

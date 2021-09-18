@@ -183,6 +183,54 @@
 				echo "</b>";			
  			?>
 			
+			<br><br>
+			<h2>Your comments</h2>
+			<br><br>
+	
+	<?php
+	if(isset($_SESSION['login_user']))
+
+		{
+			$q=mysqli_query($db,"SELECT * from review WHERE targetuser='$_SESSION[login_user]' AND status='GOOD' ;");
+			
+			if(mysqli_num_rows($q)==0)
+			{
+				echo "You have no comments as of now";
+			}
+			else
+			{
+			echo "<table class='table table-bordered table-hover' >";
+				echo "<tr style='background-color: #6db6b9e6;'>";
+					//Table header
+					echo "<th>"; echo "Username";  echo "</th>";
+					echo "<th>"; echo "Comment";  echo "</th>";
+
+			echo "</tr>";	
+
+			while($row=mysqli_fetch_assoc($q))     /*kexuan add the button in here*/
+			{
+			?>
+				<tr> 
+					<td><?php echo $row['writeruser']; ?></td>
+					<td><?php echo $row['review']; ?></td>
+					
+				</tr>
+				<?php	
+			}
+			
+			echo "</table>";
+			}
+		}
+		else
+		{
+			echo "</br></br></br>"; 
+			echo "<h2><b>";
+			echo " Please login first to see the comments.";
+			echo "</b></h2>";
+		}
+		?>
+	
+	
  		</div>
  	</div>
  </body>

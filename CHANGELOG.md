@@ -1,6 +1,32 @@
 # Change Log
 All notable changes to MyTuitionApp will be documented in this file.
 
+## [0.9] - 2021-08-22
+ #### Version Highlights (Pre-release)
+Smart match feature:
+>Same request system as the search page but this system finds a tutor/tutee for the user based on their preferences, no manual work required
+
+Review feature:
+>Users can send a comment or review to another user they have interacted with previously that they can view on their profile
+
+Reworks:
+>Big Home page and top navigation bar reworks with all new images and designs
+
+
+### Added
+- Added the review table to database
+- Added Matchsearch page for smart match function
+- Added Review page 
+
+### Changed
+- Profile page updated to show comments/reviews
+- Updated Approval page to show a user's requests that they have approved as well as requests they have sent that are approved
+- Home page updated with new graphics, layout and new navigation bar.
+
+### Fixed
+- Fixed several language errors as well as incorrectly named fields
+- Fixed several formatting issues
+
 ## [0.7] - 2021-08-22
  #### Version Highlights
 

@@ -98,11 +98,12 @@
                 ?>
             </div><br><br>
 
-  <div class="h"> <a href="matchsearch.php">Match Search</a></div>
+  
   <div class="h"> <a href="search.php">Search</a></div>
-  <div class="h"> <a href="request.php">Tutor Request</a></div>
+  <div class="h"><a href="matchsearch.php">Smart Match</a></div>
+  <div class="h"> <a href="request.php">Pending Requests</a></div>
   <div class="h"> <a href="approve.php">Request Approval</a></div>
-  <div class="h"><a href="expired.php">Your Matches</a></div>
+  
 
 </div>
 <div id="main">
@@ -124,17 +125,19 @@
 	  document.body.style.backgroundColor = "white";
 	}
 	</script>
+	
+	<h2>Pending approvals</h2>
 	<br><br>
 	
 	<?php
 	if(isset($_SESSION['login_user']))
 
 		{
-			$q=mysqli_query($db,"SELECT * from users JOIN matchinfo ON users.id=matchinfo.used_id JOIN matchrequest ON users.username=matchrequest.loguser WHERE requser='$_SESSION[login_user]' ;");
+			$q=mysqli_query($db,"SELECT * from users JOIN matchinfo ON users.id=matchinfo.used_id JOIN matchrequest ON users.username=matchrequest.loguser WHERE requser='$_SESSION[login_user]' AND  approval = 'NO';");
 			
 			if(mysqli_num_rows($q)==0)
 			{
-				echo "There's no pending request";
+				echo "You have no pending approvals";
 			}
 			else
 			{
@@ -143,8 +146,8 @@
 					//Table header
 					echo "<th>"; echo "MatchID";  echo "</th>";
 					echo "<th>"; echo "Username";  echo "</th>";
-					echo "<th>"; echo "Firstname";  echo "</th>";
-					echo "<th>"; echo "Lastname";  echo "</th>";
+					echo "<th>"; echo "First Name";  echo "</th>";
+					echo "<th>"; echo "Last Name";  echo "</th>";
 					echo "<th>"; echo "Area";  echo "</th>";
 					echo "<th>"; echo "Level";  echo "</th>";
 					echo "<th>"; echo "Subject 1";  echo "</th>";
@@ -157,7 +160,6 @@
 					echo "<th>"; echo "Rates";  echo "</th>";
 					echo "<th>"; echo "Role";  echo "</th>";
 					echo "<th>"; echo "Approved";  echo "</th>";
-					echo "<th>"; echo "Approve";  echo "</th>";
 				
 			echo "</tr>";	
 
@@ -184,6 +186,118 @@
 					<td><a href="matchmanagement/approvematch.php?matchid=<?php echo $row['matchid']; ?>">Approve</a></td>
 					<td><a href="matchmanagement/declinematch.php?matchid=<?php echo $row['matchid']; ?>">Decline</a></td>
     				<td><a href="matchmanagement/deletematch.php?matchid=<?php echo $row['matchid']; ?>">Delete</a></td>
+				</tr>
+				<?php	
+			}
+			
+			echo "</table>";
+			}
+		}
+		else
+		{
+			echo "</br></br></br>"; 
+			echo "<h2><b>";
+			echo " Please login first to see the request information.";
+			echo "</b></h2>";
+		}
+		?>
+		
+	<br><br>
+	<h2>Your approvals</h2>
+	<h5>Contact your approved tutors or tutees below.</h5>
+	<br><br>
+	
+	<?php
+	if(isset($_SESSION['login_user']))
+
+		{
+			$q=mysqli_query($db,"SELECT * from users JOIN matchinfo ON users.id=matchinfo.used_id JOIN matchrequest ON users.username=matchrequest.loguser WHERE requser='$_SESSION[login_user]' AND approval='YES' ;");
+			
+			if(mysqli_num_rows($q)==0)
+			{
+				echo "You have no approved requests as of now";
+			}
+			else
+			{
+			echo "<table class='table table-bordered table-hover' >";
+				echo "<tr style='background-color: #6db6b9e6;'>";
+					//Table header
+					echo "<th>"; echo "MatchID";  echo "</th>";
+					echo "<th>"; echo "Username";  echo "</th>";
+					echo "<th>"; echo "First Name";  echo "</th>";
+					echo "<th>"; echo "Last Name";  echo "</th>";
+					echo "<th>"; echo "Phone number";  echo "</th>";
+					echo "<th>"; echo "Email address";  echo "</th>";
+
+			echo "</tr>";	
+
+			while($row=mysqli_fetch_assoc($q))
+			{
+			?>
+				<tr>
+					<td><?php echo $row['matchid']; ?></td>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['firstname']; ?></td>    
+					<td><?php echo $row['lastname']; ?></td>
+					<td><?php echo $row['phone']; ?></td>
+					<td><?php echo $row['email']; ?></td>
+					<td><a href="matchmanagement/declinematch.php?matchid=<?php echo $row['matchid']; ?>">Decline</a></td>
+
+				</tr>
+				<?php	
+			}
+			
+			echo "</table>";
+			}
+		}
+		else
+		{
+			echo "</br></br></br>"; 
+			echo "<h2><b>";
+			echo " Please login first to see the request information.";
+			echo "</b></h2>";
+		}
+		?>
+		
+	<br><br>
+	<h2>Your approved requests</h2>
+	<br><br>
+	
+	<?php
+	if(isset($_SESSION['login_user']))
+
+		{
+			$q=mysqli_query($db,"SELECT * from users JOIN matchinfo ON users.id=matchinfo.used_id JOIN matchrequest ON users.id=matchrequest.requestid WHERE loguser='$_SESSION[login_user]' AND approval='YES' ;");
+			
+			if(mysqli_num_rows($q)==0)
+			{
+				echo "You have no approved requests as of now";
+			}
+			else
+			{
+			echo "<table class='table table-bordered table-hover' >";
+				echo "<tr style='background-color: #6db6b9e6;'>";
+					//Table header
+					echo "<th>"; echo "MatchID";  echo "</th>";
+					echo "<th>"; echo "Username";  echo "</th>";
+					echo "<th>"; echo "First Name";  echo "</th>";
+					echo "<th>"; echo "Last Name";  echo "</th>";
+					echo "<th>"; echo "Phone number";  echo "</th>";
+					echo "<th>"; echo "Email address";  echo "</th>";
+
+			echo "</tr>";	
+
+			while($row=mysqli_fetch_assoc($q))
+			{
+			?>
+				<tr>
+					<td><?php echo $row['matchid']; ?></td>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['firstname']; ?></td>    
+					<td><?php echo $row['lastname']; ?></td>
+					<td><?php echo $row['phone']; ?></td>
+					<td><?php echo $row['email']; ?></td>
+
 				</tr>
 				<?php	
 			}

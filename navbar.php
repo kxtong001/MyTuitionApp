@@ -17,16 +17,19 @@
 </head>
 <body>
 
-	    <nav class="navbar navbar-inverse">
+	    <nav class="navbar navbar-dark navbar-expand-md fixed-top" style="background-color: #e3f2fd;">
       <div class="container-fluid">
+
           <div class="navbar-header">
-            <a class="navbar-brand active">Tuition Management System</a>
+            <a class="navbar-brand active">MyTuitionApp</a>
           </div>
           <ul class="nav navbar-nav">
             <li><a href="index.php">Home</a></li>
             <li><a href="search.php">Search</a></li>
             <li><a href="review.php">Review</a></li>
           </ul>
+
+          <!--- Check User Login -->
           <?php
             if(isset($_SESSION['login_user']))
             {
@@ -34,7 +37,7 @@
           ?>
                 <ul class="nav navbar-nav">
                   <li><a href="profile.php">PROFILE</a></li>
-                  <li><a href="fine.php">FINES</a></li>
+                  
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -63,7 +66,8 @@
           ?>
 
       </div>
+      <!--- End Container -->
     </nav>
-    
+    <!--- End nav -->
 </body>
 </html>

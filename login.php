@@ -39,7 +39,7 @@
       <p style="color: white; padding-left: 15px;">
         <br><br>
         <a style="color:orange;text-decoration: none;" href="update_password.php">Forgot password?</a> &nbsp &nbsp &nbsp &nbsp &nbsp  
-        New here?<a style="color: orange; text-decoration: none;" href="registration.html">&nbspSign Up</a>
+        New here?<a style="color: orange; text-decoration: none;" href="register.php">&nbspSign Up</a>
       </p>
     </form>
     </div>
@@ -60,11 +60,6 @@
       if($count==0)
       {
         ?>
-              <!--
-              <script type="text/javascript">
-                alert("The username and password doesn't match.");
-              </script> 
-              -->
           <div class="alert alert-danger" style="width: 600px; margin-left: 370px; background-color: #de1313; color: white">
             <strong>The username and password doesn't match</strong>
           </div>    
@@ -72,7 +67,7 @@
       }
       else
       {
-        /*-------------if username & password matches---*/
+        //if username & password matches
 
         $_SESSION['login_user'] = $_POST['username']; 
         $_SESSION['pic']= $row['pic'];

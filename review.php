@@ -1,6 +1,6 @@
-<?php
-  include "navbar.php";
+<?phpp
   include "connection.php";
+  include "navbar.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,24 +15,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <style type="text/css">
-    	body
+    	/* body
     	{
     		background-image: url("images/66.jpg");
     		background-repeat: no-repeat;
-    	}
+    	} */
     	.wrapper
     	{
-    		padding: 10px;
+    		padding: 20px;
     		margin: -20px auto;
-    		width:900px;
-    		height: 600px;
+    		width:1200px;
+    		height: 900px;
     		background-color: black;
     		opacity: .8;
     		color: white;
     	}
     	.form-control
     	{
-    		height: 70px;
+    		height: 60px;
     		width: 60%;
     	}
     	.scroll
@@ -47,55 +47,45 @@
 <body>
 
 	<div class="wrapper">
-		<h4>If you have any suggesions or questions please comment below.</h4>
-		<form style="" action="" method="post">
-			<input class="form-control" type="text" name="comment" placeholder="Write something..."><br>	
-			<input class="btn btn-default" type="submit" name="submit" value="Comment" style="width: 100px; height: 35px;">		
-		</form>
+		<h4>If you have any comments or reviews you want to give to a tutor or tutee, you can do so below.</h4>
+		<br><br><form  style = "color :black" action="" method="post">
+   			<label class="form-label"><b style = "color :white">Username of the tutor/tutee: </b></label>
+   			<input class="form-control-lg" type="text" name="targetuser" placeholder="Username" required=""><br>
+   			<br><input class="form-control"  type="text" name="comment" placeholder="Write something..."><br> 
+   			<input class="btn btn-default" type="submit" name="submit" value="submit" style="width: 100px; height: 35px;">  
+  		</form>
 	
-<br><br>
-	<div class="scroll">
-		
+
 		<?php
 			if(isset($_POST['submit']))
 			{
-				$sql="INSERT INTO `comments` VALUES('', '$_SESSION[login_user]', '$_POST[comment]');";
-				if(mysqli_query($db,$sql))
-				{
-					$q="SELECT * FROM `comments` ORDER BY `comments`.`id` DESC";
-					$res=mysqli_query($db,$q);
-
-				echo "<table class='table table-bordered'>";
-					while ($row=mysqli_fetch_assoc($res)) 
-					{
-
-						echo "<tr>";
-							echo "<td>"; echo $row['username']; echo "</td>";
-							echo "<td>"; echo $row['comment']; echo "</td>";
-						echo "</tr>";
-					}
-				echo "</table>";
+				$targetuser=$_POST['targetuser'];
+				$comment=$_POST['comment'];
+				if(isset($_SESSION['login_user'])){
+					$counter=0;
+					$commentVerification = mysqli_query($db,"SELECT * FROM matchrequest WHERE (loguser='$_SESSION[login_user]' AND requser='$_POST[targetuser]') or (loguser='$_POST[targetuser]' AND requser='$_SESSION[login_user]');");
+					// $row= mysqli_fetch_assoc($commentVerification);
+					$counter=mysqli_num_rows($commentVerification);
+						if($counter == 0){
+							?>
+							<script type="text/javascript">
+							alert("You cannot comment on a tutor/tutee you have not interacted with before.");
+							</script>
+							<?php
+						}else{
+							$sql="INSERT INTO `review` VALUES ('', '$_SESSION[login_user]','$targetuser','$comment','GOOD') ;";
+							$result = mysqli_query($db,$sql);
+						}
+				}else{
+					?>
+					<script type="text/javascript">
+					alert("You must login to leave your comment");
+					</script>
+				<?php
 				}
-
-			}
-
-			else
-			{
-				$q="SELECT * FROM `comments` ORDER BY `comments`.`id` DESC"; 
-					$res=mysqli_query($db,$q);
-
-				echo "<table class='table table-bordered'>";
-					while ($row=mysqli_fetch_assoc($res)) 
-					{
-						echo "<tr>";
-							echo "<td>"; echo $row['username']; echo "</td>";
-							echo "<td>"; echo $row['comment']; echo "</td>";
-						echo "</tr>";
-					}
-				echo "</table>";
 			}
 		?>
-	</div>
+
 	</div>
 	
 </body>
