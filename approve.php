@@ -98,7 +98,7 @@
                 ?>
             </div><br><br>
 
- 
+  <div class="h"> <a href="matchsearch.php">Match Search</a></div>
   <div class="h"> <a href="search.php">Search</a></div>
   <div class="h"> <a href="request.php">Tutor Request</a></div>
   <div class="h"> <a href="approve.php">Request Approval</a></div>
@@ -131,58 +131,64 @@
 
 		{
 			$q=mysqli_query($db,"SELECT * from users JOIN matchinfo ON users.id=matchinfo.used_id JOIN matchrequest ON users.username=matchrequest.loguser WHERE requser='$_SESSION[login_user]' ;");
-
+			
 			if(mysqli_num_rows($q)==0)
 			{
 				echo "There's no pending request";
 			}
 			else
 			{
-		echo "<table class='table table-bordered table-hover' >";
-			echo "<tr style='background-color: #6db6b9e6;'>";
-				//Table header
-				
-				echo "<th>"; echo "Username";  echo "</th>";
-				echo "<th>"; echo "Firstname";  echo "</th>";
-				echo "<th>"; echo "Lastname";  echo "</th>";
-				echo "<th>"; echo "Area";  echo "</th>";
-				echo "<th>"; echo "Level";  echo "</th>";
-				echo "<th>"; echo "Subject 1";  echo "</th>";
-				echo "<th>"; echo "Subject 2";  echo "</th>";
-				echo "<th>"; echo "Subject 3";  echo "</th>";
-				echo "<th>"; echo "Available time";  echo "</th>";
-				echo "<th>"; echo "Available day 1";  echo "</th>";
-				echo "<th>"; echo "Available day 2";  echo "</th>";
-				echo "<th>"; echo "Available day 3";  echo "</th>";
-				echo "<th>"; echo "Rates";  echo "</th>";
-				echo "<th>"; echo "Role";  echo "</th>";
-				echo "<th>"; echo "Approved";  echo "</th>";
-				echo "<th>"; echo "Approve";  echo "</th>";
+			echo "<table class='table table-bordered table-hover' >";
+				echo "<tr style='background-color: #6db6b9e6;'>";
+					//Table header
+					echo "<th>"; echo "MatchID";  echo "</th>";
+					echo "<th>"; echo "Username";  echo "</th>";
+					echo "<th>"; echo "Firstname";  echo "</th>";
+					echo "<th>"; echo "Lastname";  echo "</th>";
+					echo "<th>"; echo "Area";  echo "</th>";
+					echo "<th>"; echo "Level";  echo "</th>";
+					echo "<th>"; echo "Subject 1";  echo "</th>";
+					echo "<th>"; echo "Subject 2";  echo "</th>";
+					echo "<th>"; echo "Subject 3";  echo "</th>";
+					echo "<th>"; echo "Available time";  echo "</th>";
+					echo "<th>"; echo "Available day 1";  echo "</th>";
+					echo "<th>"; echo "Available day 2";  echo "</th>";
+					echo "<th>"; echo "Available day 3";  echo "</th>";
+					echo "<th>"; echo "Rates";  echo "</th>";
+					echo "<th>"; echo "Role";  echo "</th>";
+					echo "<th>"; echo "Approved";  echo "</th>";
+					echo "<th>"; echo "Approve";  echo "</th>";
 				
 			echo "</tr>";	
 
 			while($row=mysqli_fetch_assoc($q))
 			{
-				echo "<tr>";
-				echo "<td>"; echo $row['username']; echo "</td>";
-				echo "<td>"; echo $row['firstname']; echo "</td>";
-				echo "<td>"; echo $row['lastname']; echo "</td>";
-				echo "<td>"; echo $row['area']; echo "</td>";
-				echo "<td>"; echo $row['edulevel']; echo "</td>";
-				echo "<td>"; echo $row['subject1']; echo "</td>";
-				echo "<td>"; echo $row['subject2']; echo "</td>";
-				echo "<td>"; echo $row['subject3']; echo "</td>";
-				echo "<td>"; echo $row['timeslot']; echo "</td>";
-				echo "<td>"; echo $row['availableday1']; echo "</td>";
-				echo "<td>"; echo $row['availableday2']; echo "</td>";
-				echo "<td>"; echo $row['availableday3']; echo "</td>";
-				echo "<td>"; echo $row['rate']; echo "</td>";
-				echo "<td>"; echo $row['userType']; echo "</td>";
-				echo "<td>"; echo $row['approval']; echo "</td>";
-				
-				echo "</tr>";
+			?>
+				<tr>
+					<td><?php echo $row['matchid']; ?></td>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['firstname']; ?></td>    
+					<td><?php echo $row['lastname']; ?></td>
+					<td><?php echo $row['area']; ?></td>
+					<td><?php echo $row['edulevel']; ?></td>
+					<td><?php echo $row['subject1']; ?></td>
+					<td><?php echo $row['subject2']; ?></td>
+					<td><?php echo $row['subject3']; ?></td>
+					<td><?php echo $row['timeslot']; ?></td>
+					<td><?php echo $row['availableday1']; ?></td>
+					<td><?php echo $row['availableday2']; ?></td>
+					<td><?php echo $row['availableday3']; ?></td>
+					<td><?php echo $row['rate']; ?></td>
+					<td><?php echo $row['userType']; ?></td>
+					<td><?php echo $row['approval']; ?></td>
+					<td><a href="matchmanagement/approvematch.php?matchid=<?php echo $row['matchid']; ?>">Approve</a></td>
+					<td><a href="matchmanagement/declinematch.php?matchid=<?php echo $row['matchid']; ?>">Decline</a></td>
+    				<td><a href="matchmanagement/deletematch.php?matchid=<?php echo $row['matchid']; ?>">Delete</a></td>
+				</tr>
+				<?php	
 			}
-		echo "</table>";
+			
+			echo "</table>";
 			}
 		}
 		else

@@ -1,6 +1,19 @@
 # Change Log
 All notable changes to MyTuitionApp will be documented in this file.
 
+## [0.7] - 2021-08-22
+ #### Version Highlights
+
+Requests and Approval page:
+> Approval system is now functional with buttons to approve, decline or delete on the Approval page
+
+### Added
+- Added the approve, decline and delete buttons
+
+### Changed
+
+### Fixed
+
 ## [0.6] - 2021-08-21
  #### Version Highlights
  Search page: 
