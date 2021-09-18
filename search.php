@@ -103,8 +103,8 @@
  
   <div class="h"> <a href="search.php">Search</a></div>
   <div class="h"> <a href="request.php">Tutor Request</a></div>
-  <div class="h"> <a href="issue_info.php">Issue Information</a></div>
-  <div class="h"><a href="expired.php">Expired List</a></div>
+  <div class="h"> <a href="approve.php">Request Approval</a></div>
+  <div class="h"><a href="expired.php">Your Matches</a></div>
 </div>
 
 <div id="main">
@@ -136,11 +136,11 @@ function closeNav() {
 				</button>
 		</form>
 	</div>
-	<!--___________________request book__________________-->
+	<!--___________________request tutor__________________-->
 	<div class="srch">
 		<form class="navbar-form" method="post" name="form1">
 			
-				<input class="form-control" type="text" name="bid" placeholder="Enter tutor ID" required="">
+				<input class="form-control" type="text" name="matchid" placeholder="Enter tutor ID" required="">
 				<button style="background-color: #6db6b9e6;" type="submit" name="submit1" class="btn btn-default">Request
 				</button>
 		</form>
@@ -259,7 +259,9 @@ function closeNav() {
 		{
 			if(isset($_SESSION['login_user']))
 			{
-				mysqli_query($db,"INSERT INTO issue_book Values('$_SESSION[login_user]', '$_POST[bid]', '', '', '');");
+				
+				mysqli_query($db,"INSERT INTO matchrequest Values('','$_SESSION[login_user]', $_POST[matchid], '', '');");
+				mysqli_query($db,"UPDATE matchrequest JOIN users ON users.id=matchrequest.requestid SET matchrequest.requser = users.username;");
 				?>
 					<script type="text/javascript">
 						window.location="request.php"

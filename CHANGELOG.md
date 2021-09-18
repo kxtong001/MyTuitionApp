@@ -1,6 +1,22 @@
 # Change Log
 All notable changes to MyTuitionApp will be documented in this file.
 
+## [0.6] - 2021-08-21
+ #### Version Highlights
+ Search page: 
+ > Request feature allows the user to request a tutor or a tutee
+
+Requests and Approval page:
+> Tutors and tutees can see their requests and approvals
+
+### Added
+- Added the matchrequest table in database
+- Added the request function on Search page
+- Added Request and Approval page
+
+### Changed
+- Side navigation bar has been changed to give access to the new pages
+
 ## [0.4] - 2021-08-18
  #### Version Highlights
  Search page: 
