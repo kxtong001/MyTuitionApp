@@ -309,7 +309,6 @@
 			$contact=$_POST['phone'];
 			$firstname=$_POST['firstname'];
 			$lastname=$_POST['lastname'];
-			$username=$_POST['username'];
 			$password=$_POST['password'];
 			$userType=$_POST['userType'];
 			$pic=$_FILES['file']['name'];
@@ -326,7 +325,7 @@
 
 			$sql1 ="UPDATE matchinfo JOIN users ON matchinfo.used_id = users.id SET area='$area', edulevel='$edulevel', subject1='$subject1', subject2='$subject2', subject3='$subject3', timeslot='$timeslot', availableday1='$availableday1',availableday2='$availableday2',availableday3='$availableday3',rate='$rate' WHERE username='".$_SESSION['login_user']."';";
 			$result = mysqli_query($db, $sql1);
-			$sql2 = "UPDATE users SET pic='$pic', firstname='$firstname', lastname='$lastname', username='$username', password ='$password', email='$email', phone='$phone', userType='$userType' WHERE username='".$_SESSION['login_user']."';";
+			$sql2 = "UPDATE users SET pic='$pic', firstname='$firstname', lastname='$lastname', password ='$password', email='$email', phone='$phone', userType='$userType' WHERE username='".$_SESSION['login_user']."';";
 			
 			if(mysqli_query($db, $sql2))
 			{
