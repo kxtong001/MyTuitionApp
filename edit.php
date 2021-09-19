@@ -95,8 +95,6 @@
 			<div class="form-group col-md-4">
 				<label><h4><b>Username: </b></h4></label>
 				<?php echo $username; ?>
-                    Must not contain spaces, special characters,emoji.
-                </small>
 			</div>
 			<div class="form-group col-md-4">
 				<label><h4><b>Password: </b></h4></label>
