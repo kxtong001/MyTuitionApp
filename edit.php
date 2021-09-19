@@ -94,8 +94,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label><h4><b>Username: </b></h4></label>
-				<input class="form-control" type="text" name="username" value="<?php echo $username; ?>"aria-describedby="usernameHelper" required ="">
-				<small id="usernameHelper" class="form-text text-muted">
+				<?php echo $username; ?>
                     Must not contain spaces, special characters,emoji.
                 </small>
 			</div>
