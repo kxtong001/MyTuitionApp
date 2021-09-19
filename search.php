@@ -280,7 +280,7 @@ function closeNav() {
 			{
 				?>
 					<script type="text/javascript">
-						alert("You must login to search for a tutor");
+						alert("You must login to request");
 					</script>
 				<?php
 			}
