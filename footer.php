@@ -62,7 +62,7 @@
 				</div>
 				<div class="col-md-4">
 					<h3 class="text-center">CONTACT INFO</h3>
-					<br><a href=https://github.com/kxtong001/MyTuitionApp Github></a>
+					<br><a href=https://github.com/kxtong001/MyTuitionApp> Github</a>
 					<p>(65) xxxx-xxxx<br>
 					email@tuition.com</p>
 				</div>
